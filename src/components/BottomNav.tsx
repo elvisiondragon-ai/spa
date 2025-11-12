@@ -1,13 +1,16 @@
 import { NavLink } from "./NavLink";
 import { Home, BookOpen, Calendar, Users, User } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const BottomNav = () => {
+  const { t } = useLanguage();
+  
   const navItems = [
-    { to: "/", icon: Home, label: "Beranda" },
-    { to: "/services", icon: BookOpen, label: "Layanan" },
-    { to: "/booking", icon: Calendar, label: "Pesan" },
-    { to: "/therapists", icon: Users, label: "Terapis" },
-    { to: "/profile", icon: User, label: "Profil" },
+    { to: "/", icon: Home, label: t("nav.home") },
+    { to: "/services", icon: BookOpen, label: t("nav.services") },
+    { to: "/booking", icon: Calendar, label: t("nav.booking") },
+    { to: "/therapists", icon: Users, label: t("nav.therapists") },
+    { to: "/profile", icon: User, label: t("nav.profile") },
   ];
 
   return (

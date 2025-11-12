@@ -3,24 +3,27 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Clock, MapPin, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 import spaHero from "@/assets/spa-hero.jpg";
 import spaTreatment from "@/assets/spa-treatment.jpg";
 
 const Home = () => {
+  const { t } = useLanguage();
+  
   const featuredServices = [
     {
-      title: "Signature Royal Massage",
-      duration: "90 menit",
+      title: t("service.signatureMassage"),
+      duration: `90 ${t("common.minutes")}`,
       price: "AED 450",
       image: spaTreatment,
-      badge: "Paling Populer",
+      badge: t("common.popular"),
     },
     {
-      title: "Deep Tissue Therapy",
-      duration: "60 menit",
+      title: t("service.deepTissue"),
+      duration: `60 ${t("common.minutes")}`,
       price: "AED 350",
       image: spaTreatment,
-      badge: "Baru",
+      badge: t("common.new"),
     },
   ];
 
@@ -46,8 +49,8 @@ const Home = () => {
       <div className="container mx-auto px-4 py-8 space-y-8">
         {/* Welcome Section */}
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-semibold text-foreground">Selamat Datang</h2>
-          <p className="text-muted-foreground">Pengalaman kemewahan dan relaksasi menanti Anda</p>
+          <h2 className="text-2xl font-semibold text-foreground">{t("home.welcome")}</h2>
+          <p className="text-muted-foreground">{t("home.subtitle")}</p>
         </div>
 
         {/* Quick Actions */}
@@ -55,13 +58,13 @@ const Home = () => {
           <Link to="/booking">
             <Button className="w-full h-24 flex flex-col gap-2 bg-primary hover:bg-primary/90">
               <Sparkles className="h-6 w-6" />
-              <span>Pesan Sekarang</span>
+              <span>{t("home.bookNow")}</span>
             </Button>
           </Link>
           <Link to="/therapists">
             <Button variant="outline" className="w-full h-24 flex flex-col gap-2 border-primary text-primary hover:bg-primary/5">
               <Star className="h-6 w-6" />
-              <span>Pilih Terapis</span>
+              <span>{t("home.chooseTherapist")}</span>
             </Button>
           </Link>
         </div>
@@ -69,10 +72,10 @@ const Home = () => {
         {/* Featured Services */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-foreground">Layanan Unggulan</h3>
+            <h3 className="text-xl font-semibold text-foreground">{t("home.featuredServices")}</h3>
             <Link to="/services">
               <Button variant="ghost" size="sm" className="text-primary">
-                Lihat Semua
+                {t("home.viewAll")}
               </Button>
             </Link>
           </div>
@@ -103,7 +106,7 @@ const Home = () => {
                         <span className="text-2xl font-bold text-primary">{service.price}</span>
                         <Link to="/booking">
                           <Button size="sm" className="bg-primary hover:bg-primary/90">
-                            Pesan
+                            {t("home.book")}
                           </Button>
                         </Link>
                       </div>
@@ -124,7 +127,7 @@ const Home = () => {
               ))}
             </div>
             <p className="text-sm text-foreground italic mb-2">
-              "Pengalaman spa terbaik di Dubai. Terapis sangat profesional dan suasananya sangat menenangkan."
+              "{t("home.testimonial")}"
             </p>
             <p className="text-xs text-muted-foreground">- Sarah M.</p>
           </CardContent>
